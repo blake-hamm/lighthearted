@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/blake-hamm/boilerplates/",
+  "commit": "20b5aa585d02752ffd5099933caeaebe4ea90599",
+  "checkout": "feature/python-update",
+  "context": {
+    "cookiecutter": {
+      "full_name": "Blake Hamm",
+      "email": "blake.j.hamm@gmail.com",
+      "project_name": "Lighthearted",
+      "project_slug": "lighthearted",
+      "project_short_description": "Python mental health AI application.",
+      "open_source_license": "BSD license",
+      "_template": "https://github.com/blake-hamm/boilerplates/",
+      "_commit": "20b5aa585d02752ffd5099933caeaebe4ea90599"
+    }
+  },
+  "directory": "python"
+}

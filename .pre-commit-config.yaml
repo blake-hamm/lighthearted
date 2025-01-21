@@ -1,0 +1,29 @@
+repos:
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.5.7
+  hooks:
+    # Run the linter.
+    - id: ruff
+      types_or: [ python, pyi, jupyter ]
+      args: [ --fix ]
+    # Run the formatter.
+    - id: ruff-format
+      types_or: [ python, pyi, jupyter ]
+- repo: local
+  hooks:
+    - id: run-coverage
+      name: Run Coverage
+      entry: poetry run coverage run
+      language: system
+      pass_filenames: false  # Prevent passing filenames as arguments
+      stages: [commit]
+- repo: local
+  hooks:
+    - id: report-coverage
+      name: Report Coverage
+      entry: poetry run coverage report
+      language: system
+      pass_filenames: false  # Prevent passing filenames as arguments
+      stages: [commit]
+

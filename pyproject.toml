@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "lighthearted"
+version = "0.1.0"
+description = "Python mental health AI application."
+readme = "README.md"
+authors = [
+  "Blake Hamm <blake.j.hamm@gmail.com>"
+]
+maintainers = [
+  "Blake Hamm <blake.j.hamm@gmail.com>"
+]
+license = "BSD license"
+packages = [{include = "lighthearted", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+# Dev dependencies
+[tool.poetry.group.dev.dependencies]
+cookiecutter = "^2.6.0"
+cruft = "^2.15.0"
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+coverage = "^7.6.1"
+ruff = "^0.5.7"
+pre-commit = "^3.8.0"
+
+
+[tool.ruff] # Linting rules
+select = ["I", "F", "E", "W", "N", "D", "ANN", "B", "A", "T20", "PYI", "Q", "RET", "ARG", "PTH", "PL", "PT"]
+
+
+[tool.pytest.ini_options]
+adopts = "-s"
+testpaths = ["tests"]
+
+[tool.coverage] # Coverage config
+source = [
+  "src",
+  "tests",
+  "notebooks",
+]
+
+[tool.coverage.run]
+command_line = "-m pytest"
+omit = ["*test*", "*__init__*"]
+
+# Always include branch coverage
+branch = true
+
+[tool.coverage.report]
+fail_under = 80
+ignore_errors = true
+show_missing = true
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[virtualenvs]
+in-project = true

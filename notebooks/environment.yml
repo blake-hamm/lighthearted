@@ -1,0 +1,10 @@
+name: lighthearted
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10  # Adjust to your Python version
+  - pip
+  - notebook
+  - ipykernel
+  - pip:
+      - -e ../  # Add your local package
