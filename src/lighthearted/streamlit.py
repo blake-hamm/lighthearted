@@ -21,9 +21,15 @@ if "messages" not in st.session_state:
   st.session_state["messages"] = [{"role": "ai", "content": welcome_message}]
 if "questions" not in st.session_state:
   st.session_state["questions"] = questions.copy()
+if "welcome_streamed" not in st.session_state:
+  st.session_state["welcome_streamed"] = False
 
 for msg in st.session_state.messages:
-  st.chat_message(msg["role"]).write(msg["content"])
+  if not st.session_state["welcome_streamed"]:
+    st.chat_message(msg["role"]).write(stream_text(msg["content"]))
+    st.session_state["welcome_streamed"] = True
+  else:
+    st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
   st.session_state.messages.append({"role": "user", "content": prompt})
@@ -32,4 +38,4 @@ if prompt := st.chat_input():
   if st.session_state["questions"]:
     next_question = st.session_state["questions"].pop(0)
     st.session_state.messages.append({"role": "ai", "content": next_question})
-    st.chat_message("ai").write(next_question)
+    st.chat_message("ai").write(stream_text(next_question))
