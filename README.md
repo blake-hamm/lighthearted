@@ -12,4 +12,7 @@ gcloud auth application-default login
 
 # To run jupyter notebook
 poetry run jupyter-notebook
+
+# To run the streamlit app
+poetry run streamlit run src/lighthearted/streamlit.py
 ```
