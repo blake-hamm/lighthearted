@@ -7,12 +7,12 @@ Python mental health AI application.
 # To get into a nix-based development environment with python and conda
 nix develop
 
-# To activate conda
-conda-shell
+# To authenticate with gcp
+gcloud auth application-default login
 
-# To create conda environment in notebooks directory
-conda env create -f notebooks/environment.yml
+# To run jupyter notebook
+poetry run jupyter-notebook
 
-# To update with changes
-conda env update -f notebooks/environment.yml --prune
+# To run the streamlit app
+poetry run streamlit run src/lighthearted/streamlit.py
 ```
